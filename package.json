@@ -1,0 +1,20 @@
+{
+  "name": "ngusers",
+  "version": "1.0.0",
+  "description": "Angular learning",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jesús Mur Fontanals",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.10.1",
+    "morgan": "^1.4.1",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.9",
+    "gulp-nodemon": "^1.0.4"
+  }
+}

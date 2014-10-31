@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var app = module.exports = express();
 
 var morgan = require('morgan');
@@ -9,6 +10,7 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'));
 

@@ -19,10 +19,28 @@
     });
 
     app.controller('TabsController', function(){
-       this.tab = 1;
+       this.tab = 3;
 
        this.selectTab = function (tab) {
            this.tab = tab;
        }; 
+    });
+
+    app.controller('CommentsController', function(){
+       this.comments = [];
+       this.comment = {};
+
+       this.anonymousChanged = function () {
+           if (this.comment.anonymous) {
+                this.comment.email = "";
+           };
+       };
+
+       this.addComment = function () {
+            this.comment.date = Date.now();
+            this.comments.push(this.comment);
+            this.comment = {};
+       };
+        
     });
 })();

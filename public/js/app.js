@@ -26,21 +26,42 @@
        }; 
     });
 
-    app.controller('CommentsController', function(){
-       this.comments = [];
-       this.comment = {};
-
-       this.anonymousChanged = function () {
-           if (this.comment.anonymous) {
-                this.comment.email = "";
-           };
-       };
-
-       this.addComment = function () {
-            this.comment.date = Date.now();
-            this.comments.push(this.comment);
-            this.comment = {};
-       };
-        
+    app.directive('userData', function(){
+      return {
+        restrict: 'E',
+        templateUrl: 'partials/user-data.html'
+      };
     });
+
+    app.directive('userWork', function(){
+      return {
+        restrict: 'E',
+        templateUrl: 'partials/user-work.html'
+      };
+    });
+
+    app.directive('userComments', function(){
+      return {
+          restrict: 'E',
+          templateUrl: 'partials/user-comments.html',
+          controller: function () {
+            this.comments = [];
+            this.comment = {};
+
+            this.anonymousChanged = function () {
+               if (this.comment.anonymous) {
+                    this.comment.email = "";
+               };
+            };
+
+            this.addComment = function () {
+                this.comment.date = Date.now();
+                this.comments.push(this.comment);
+                this.comment = {};
+           };
+        
+        }, controllerAs: 'cmtsCtrl'
+      };
+    });
+    
 })();

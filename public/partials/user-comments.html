@@ -1,0 +1,38 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Comentarios</h2>
+    </div>
+    <div class="panel-body">
+        <form name="commentsForm" role="form" ng-submit="commentsForm.$valid && cmtsCtrl.addComment()">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label for="comment">Comentario</label>
+                   <textarea ng-model="cmtsCtrl.comment.body" class="form-control" name="comment" id="comment" placeholder="Escribe tu comentario" required></textarea> 
+                </div>
+                <div class="col-md-12">
+                    <label for="email">Correo electrónico</label>
+                    <input ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous" type="text" class="form-control" id="email" name="email" placeholder="Escribe tu correo electrónico" ng-required="!cmtsCtrl.comment.anonymous">
+                    <br>
+                    <label>
+                        <input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" id="anonymous">
+                        Anónimo
+                    </label>
+                </div>
+                <br>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-lg">Comentar</button>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-12">
+        <div ng-if="!commentsForm.$valid" class="alert alert-danger">El formulario es invalido</div>
+        <br>
+            <blockquote ng-repeat="comment in cmtsCtrl.comments">
+                <p>{{comment.body}}</p>
+                <footer>
+                    Comentario realizado por <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a><em ng-if="comment.anonymous">Anónimo</em><span> el {{comment.date | date : 'medium'}}</span>
+                </footer>
+            </blockquote>
+        </div>                            
+    </div>
+</div> 

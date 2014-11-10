@@ -30,58 +30,17 @@
                             <li ng-class="{ active: tabs.tab === 3 }"><a ng-click="tabs.selectTab(3)">Comentarios <span class="badge">2</span></a></li>
                         </ul>
                         <br>
-                    <!-- content -->
-                    <ul class="list-group" ng-show="tabs.tab === 1">
-                        <li class="list-group-item"><strong>Calle: </strong><span class="pull-right">{{ UserCtrl.user.street }}</span></li>
-                        <li class="list-group-item"><strong>Población: </strong><span class="pull-right">{{ UserCtrl.user.city }}</span></li>
-                        <li class="list-group-item"><strong>Provincia: </strong><span class="pull-right">{{ UserCtrl.user.state }}</span></li>
-                        <li class="list-group-item"><strong>Código postal: </strong><span class="pull-right">{{ UserCtrl.user.cp }}</span></li>
-                        <li class="list-group-item"><strong>Habilidades: </strong><span ng-repeat="ability in UserCtrl.user.abilities" class="label ability-{{ ability | lowercase }} pull-right">{{ ability }}</span></li>
-                    </ul>
-                    <ul class="list-group" ng-show="tabs.tab === 2">
-                        <li class="list-group-item"><strong>Horas trabajadas:</strong><span class="badge pull-right">{{ UserCtrl.user.data.worked_hours }}</span></li>
-                        <li class="list-group-item"><strong>Horas trabajadas por día:</strong><span class="badge pull-right">{{ UserCtrl.user.data.worked_hpd }}</span></li>
-                        <li class="list-group-item"><strong>Salario:</strong><span class="badge pull-right">{{ UserCtrl.user.data.salary | currency }}</span></li>
-                    </ul>
+                    <!-- user info -->
+                    <div ng-show="tabs.tab === 1">
+                        <user-data></user-data>
+                    </div>
+                    <!-- user work info -->
+                    <div ng-show="tabs.tab === 2">
+                        <user-work></user-work>
+                    </div>
                     <!-- comments -->
-                    <div ng-controller="CommentsController as cmtsCtrl">
-                        <div class="panel panel-primary" ng-show="tabs.tab === 3">
-                            <div class="panel-heading">
-                                <h2 class="panel-title">Comentarios</h2>
-                            </div>
-                            <div class="panel-body">
-                                <form role="form" ng-submit="cmtsCtrl.addComment()">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label for="comment">Comentario</label>
-                                           <textarea ng-model="cmtsCtrl.comment.body" class="form-control" name="comment" id="comment" placeholder="Escribe tu comentario"></textarea> 
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="email">Correo electrónico</label>
-                                            <input ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous" type="text" class="form-control" id="email" name="email" placeholder="Escribe tu correo electrónico">
-                                            <br>
-                                            <label>
-                                                <input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" id="anonymous">
-                                                Anónimo
-                                            </label>
-                                        </div>
-                                        <br>
-                                        <div class="col-md-2">
-                                            <button type="submit" class="btn btn-lg">Comentar</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="col-md-12">
-                                <br>
-                                    <blockquote ng-repeat="comment in cmtsCtrl.comments">
-                                        <p>{{comment.body}}</p>
-                                        <footer>
-                                            Comentario realizado por <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a><em ng-if="comment.anonymous">Anónimo</em><span> a las {{comment.date}}</span>
-                                        </footer>
-                                    </blockquote>
-                                </div>                            
-                            </div>
-                        </div> 
+                    <div ng-show="tabs.tab === 3">
+                        <user-comments></user-comments>
                     </div>
                 </div>
             </div>

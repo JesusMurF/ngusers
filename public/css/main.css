@@ -10,3 +10,13 @@ body{
 .ability-python{
     background-color: blue;
 }
+
+.ng-invalid.ng-dirty{
+    border-color: red;
+    border-width: 2px;
+}
+
+.ng-valid.ng-dirty{
+    border-color: yellow;
+    border-width: 2px;
+}

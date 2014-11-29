@@ -11,12 +11,11 @@ gulp.task('develop', function () {
   nodemon({ script: 'app.js', ext: 'html js', ignore: [] })
     .on('change', [])
     .on('restart', function () {
-      console.log('restarted!')
+      console.log('restarted!');
     });
 });
 
 gulp.task('watch', function (){
-
     gulp.watch('public/styl/**.styl', function (){
         gulp.run('styl');
     });

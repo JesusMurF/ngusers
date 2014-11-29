@@ -16,34 +16,37 @@
         {% raw %}
         <div class="row">
         <h1>Agenda de usuarios</h1>
-            <div class="col-md-4 panel panel-body">
-                <h2 class="text-center">{{ UserCtrl.user.first }} {{ UserCtrl.user.last }}</h2>
+        <div class="panel panel-default">
+            <h2 class="text-center">{{ UserCtrl.user.first }} {{ UserCtrl.user.last }}</h2>
                 <figure class="text-center">
-                        <img src="images/jesus.jpg" width="200" height="200" class="img-circle" alt="{{ UserCtrl.user.first }} {{ UserCtrl.user.last }}">
+                    <img src="images/jesus.jpg" width="150" height="150" class="img-rounded" alt="{{ UserCtrl.user.first }} {{ UserCtrl.user.last }}">
                 </figure>
                 <br>
                 <!-- tabs -->
-                    <div ng-controller="TabsController as tabs">   
+                    <div ng-controller="TabsController as tabs">
                         <ul class="nav nav-tabs nav-justified">
                             <li ng-class="{ active: tabs.tab === 1 }"><a ng-click="tabs.selectTab(1)">Estado</a></li>
                             <li ng-class="{ active: tabs.tab === 2 }"><a ng-click="tabs.selectTab(2)">Datos</a></li>
                             <li ng-class="{ active: tabs.tab === 3 }"><a ng-click="tabs.selectTab(3)">Comentarios <span class="badge">2</span></a></li>
                         </ul>
                         <br>
-                    <!-- user info -->
-                    <div ng-show="tabs.tab === 1">
-                        <user-data></user-data>
-                    </div>
-                    <!-- user work info -->
-                    <div ng-show="tabs.tab === 2">
-                        <user-work></user-work>
-                    </div>
-                    <!-- comments -->
-                    <div ng-show="tabs.tab === 3">
-                        <user-comments></user-comments>
+                    <div class="col-md-4 panel-body">
+                        <!-- user info -->
+                        <div ng-show="tabs.tab === 1">
+                            <user-data></user-data>
+                        </div>
+                        <!-- user work info -->
+                        <div ng-show="tabs.tab === 2">
+                            <user-work></user-work>
+                        </div>
+                        <!-- comments -->
+                        <div ng-show="tabs.tab === 3">
+                            <user-comments></user-comments>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         {% endraw %}
     </div>
 </body>

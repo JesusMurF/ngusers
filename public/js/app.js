@@ -8,7 +8,7 @@
             street: 'Los Planetas nº22',
             city: 'Madrid',
             state: 'Madrid',
-            cp: 28080,
+            postal_code: 28080,
             abilities: ['Javascript', 'Python'],
             data: {
                 worked_hours: 40,

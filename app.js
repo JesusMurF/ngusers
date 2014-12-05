@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
 mongoose.connect('mongodb://localhost:27017/employees');
 var Employee = require('./models/employees.js');
 
-app.post('/add',function(req, res) {
+app.post('/api/add',function(req, res) {
         var employee = new Employee({
         first: req.body.first, 
         last: req.body.last,
@@ -49,6 +49,15 @@ app.post('/add',function(req, res) {
             res.json({employee: employee, message: 'Employee created!' });
         });
     });
+
+app.get('/api/all', function(req, res) {
+    Employee.find(function(err, employees) {
+        if (err) {
+            res.send(err);
+        };
+        res.json(employees);
+    })
+})
 
 var port = 3000;
 app.listen(port, function (err) {

@@ -1,46 +1,25 @@
 (function () {
-    var app = angular.module('users', []);
-
-    app.controller('UserController', function(){
-        this.user = {
-            first: 'Jesús',
-            last: 'Mur Fontanals',
-            street: 'Los Planetas nº22',
-            city: 'Madrid',
-            state: 'Madrid',
-            postal_code: 28080,
-            abilities: ['Javascript', 'Python'],
-            data: {
-                worked_hours: 40,
-                worked_hpd: 8,
-                salary: 1200
-            }
-        }
-    });
-
-    app.controller('TabsController', function(){
-       this.tab = 3;
-
-       this.selectTab = function (tab) {
-           this.tab = tab;
-       }; 
-    });
-
-    app.directive('userData', function(){
+    /**
+    * user.directives Module
+    *
+    * Description
+    */
+    angular.module('user.directives', [])
+    .directive('userData', function(){
       return {
         restrict: 'E',
         templateUrl: 'partials/user-data.html'
       };
-    });
+    })
 
-    app.directive('userWork', function(){
+    .directive('userWork', function(){
       return {
         restrict: 'E',
         templateUrl: 'partials/user-work.html'
       };
-    });
+    })
 
-    app.directive('userComments', function(){
+    .directive('userComments', function(){
       return {
           restrict: 'E',
           templateUrl: 'partials/user-comments.html',
@@ -63,5 +42,4 @@
         }, controllerAs: 'cmtsCtrl'
       };
     });
-    
 })();

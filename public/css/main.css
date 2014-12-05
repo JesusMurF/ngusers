@@ -11,6 +11,10 @@ body{
     background-color: blue;
 }
 
+.ability-ruby{
+    background-color: red;
+}
+
 .ng-invalid.ng-dirty{
     border-color: red;
     border-width: 2px;

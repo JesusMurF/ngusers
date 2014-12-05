@@ -19,14 +19,14 @@
                     </label>
                 </div>
                 <br>
-                <div class="col-md-2">
+                <div class="col-md-12">
                     <button type="submit" class="btn btn-lg">Comentar</button>
                 </div>
             </div>
         </form>
         <div class="col-md-12">
-        <div ng-if="!commentsForm.$valid" class="alert alert-danger">El formulario es invalido</div>
         <br>
+        <div ng-if="!commentsForm.$valid" class="alert alert-danger">El formulario es invalido</div>
             <blockquote ng-repeat="comment in cmtsCtrl.comments">
                 <p>{{comment.body}}</p>
                 <footer>

@@ -1,0 +1,16 @@
+<div class="page-header">
+    <h2>Lista de usuarios</h2>
+    <div ng-repeat="user in users">
+        <div class="panel panel-default">
+            <div class="media">
+                <div class="media-left">
+                    <img ng-src="{{user.image}}" height="90" width="90" class="img" alt="{{user.first}} {{user.last}}">
+                </div>
+                <div class="media-body">
+                    <h3><a ng-href="/#user/{{user.first}}">{{user.first}} {{user.last}}</a></h3>
+                    <p>{{user.city}} ({{user.state}})</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

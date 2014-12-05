@@ -8,21 +8,16 @@ gulp.task('default', function() {
 });
 
 gulp.task('develop', function () {
-  nodemon({ script: 'app.js', ext: 'html js', ignore: [] })
-    .on('change', [])
-    .on('restart', function () {
-      console.log('restarted!');
-    });
-});
-
-gulp.task('watch', function (){
-    gulp.watch('public/styl/**.styl', function (){
-        gulp.run('styl');
-    });
-
-    livereload.listen();
-    gulp.watch('ngusers/views/').on('change', livereload.changed);
+  livereload.listen();
+  nodemon({
+    script: 'app.js',
+    ext: 'js html',
+  }).on('restart', function () {
+    setTimeout(function () {
+      livereload.changed();
+    }, 500);
+  });
 });
 
 
-gulp.task('default',['develop', 'watch']);
+gulp.task('default',['develop']);

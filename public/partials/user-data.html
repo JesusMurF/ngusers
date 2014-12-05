@@ -1,7 +1,7 @@
 <ul class="list-group">
-    <li class="list-group-item"><strong>Calle: </strong><span class="pull-right">{{ UserCtrl.user.street }}</span></li>
-    <li class="list-group-item"><strong>Población: </strong><span class="pull-right">{{ UserCtrl.user.city }}</span></li>
-    <li class="list-group-item"><strong>Provincia: </strong><span class="pull-right">{{ UserCtrl.user.state }}</span></li>
-    <li class="list-group-item"><strong>Código postal: </strong><span class="pull-right">{{ UserCtrl.user.postal_code }}</span></li>
-    <li class="list-group-item"><strong>Habilidades: </strong><span ng-repeat="ability in UserCtrl.user.abilities" class="label ability-{{ ability | lowercase }} pull-right">{{ ability }}</span></li>    
+    <li class="list-group-item"><strong>Calle: </strong><span class="pull-right">{{ user.street }}</span></li>
+    <li class="list-group-item"><strong>Población: </strong><span class="pull-right">{{ user.city }}</span></li>
+    <li class="list-group-item"><strong>Provincia: </strong><span class="pull-right">{{ user.state }}</span></li>
+    <li class="list-group-item"><strong>Código postal: </strong><span class="pull-right">{{ user.postal_code }}</span></li>
+    <li class="list-group-item"><strong>Habilidades: </strong><span ng-repeat="ability in user.abilities" class="label ability-{{ ability | lowercase }} pull-right">{{ ability }}</span></li>    
 </ul>

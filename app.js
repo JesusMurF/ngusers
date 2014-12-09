@@ -27,7 +27,7 @@ var Employee = require('./models/employees.js');
 
 app.post('/api/add',function(req, res) {
         var employee = new Employee({
-        first: req.body.first, 
+        first: req.body.first,
         last: req.body.last,
         street: req.body.street,
         city: req.body.city,
@@ -54,10 +54,10 @@ app.get('/api/all', function(req, res) {
     Employee.find(function(err, employees) {
         if (err) {
             res.send(err);
-        };
+        }
         res.json(employees);
-    })
-})
+    });
+});
 
 var port = 3000;
 app.listen(port, function (err) {

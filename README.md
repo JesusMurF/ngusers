@@ -9,8 +9,6 @@
 
 ### Issues a revisar.
 
-* Crear filter de Angular para la normalización de los nombres (Archivo services.js).
-
 * Resolver un error en el filtro del array .some (Archivo services.js).
 
 ### Próximas feautures a desarrollar.

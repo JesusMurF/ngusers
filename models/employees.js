@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var EmployeesSchema = new mongoose.Schema({
     first: String,
     last: String,
+    image: {type: String, default: 'images/default.jpg'},
     street: String,
     city: String,
     state: String,

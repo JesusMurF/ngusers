@@ -15,7 +15,7 @@ gulp.task('develop', function () {
   }).on('restart', function () {
     setTimeout(function () {
       livereload.changed();
-    }, 500);
+    }, 100);
   });
 });
 

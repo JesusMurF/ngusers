@@ -1,5 +1,10 @@
-<div class="page-header">
-    <h2>Lista de usuarios</h2>
+<div class="page-header" ng-controller="UserController as UserCtrl">
+    <div>
+        <a ng-href="/#user/add">
+            <button type="button" class="btn btn-default">Añadir empleado</button>
+        </a>
+    </div>
+    <br>
     <div ng-repeat="user in users">
         <div class="panel panel-default">
             <div class="media">
@@ -8,7 +13,7 @@
                 </div>
                 <div class="media-body">
                     <h3><a ng-href="/#user/{{user.first | slugify}}">{{user.first}} {{user.last}}</a></h3>
-                    <p>{{user.city}} ({{user.state}})</p>
+                    <p>{{user.city}}  <span ng-if="user.state">({{user.state}})</span></p>
                 </div>
             </div>
         </div>

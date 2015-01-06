@@ -10,7 +10,7 @@
             var deferred = $q.defer();
 
             function all() {
-                $http.get('/api/employee/all')
+                $http.get('/api/employees')
                     .success(function(data) {
                         deferred.resolve(data);
                     });

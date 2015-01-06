@@ -49,7 +49,8 @@ app.get('/', function (req, res) {
 });
 
 mongoose.connect('mongodb://localhost:27017/employees');
-var employeeRoutes = require('./routes/employee.js')(app);
+//var employeeRoutes = require('./routes/employee.js')(app);
+require('./routes/employee.js')(app);
 
 
 var port = 3000;

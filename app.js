@@ -6,7 +6,8 @@ var express = require('express'),
     methodOverride = require('method-override'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    app = express();
+    app = express(),
+    router = express.Router();
 
 app.engine('html', swig.renderFile);
 app.use(morgan('dev'));
@@ -52,7 +53,7 @@ app.get('/', function(req, res) {
 
 mongoose.connect('mongodb://localhost:27017/employees');
 
-require('./routes/employee.js')(app);
+require('./routes/employee.js')(app,router);
 
 
 var port = 3000;

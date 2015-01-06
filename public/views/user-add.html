@@ -1,0 +1,29 @@
+<div class="page-header">
+    <a href="/#/">
+        <button class="btn btn-default">Regresar</button>
+    </a>
+</div>   
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>Agregar empleado</strong>
+    </div>
+    <div class="panel-body">
+        <form action="/api/employee/add" method="post" role="form">
+            <div class="form-group">
+                <label for="first">Nombre</label>
+                <input type="text" class="form-control" id="first" name="first" placeholder="Escribe un nombre">
+                <label for="last">Apellidos</label>
+                <input type="text" class="form-control" id="last" name="last" placeholder="Escribe los apellidos">
+                <label for="street">Dirección</label>
+                <input type="text" class="form-control" id="street" name="street" placeholder="Escribe una dirección">
+                <label for="city">Ciudad</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Escribe una ciudad">
+                <label for="state">Comunidad autónoma</label>
+                <input type="text" class="form-control" id="state" name="state" placeholder="Escribe una ciudad">
+                <label for="country">País</label>
+                <input type="text" class="form-control" id="country" name="country" placeholder="Escribe una ciudad">
+            </div>
+            <button type="submit" class="btn btn-success">Guardar empleado</button>
+        </form>        
+    </div>
+</div>

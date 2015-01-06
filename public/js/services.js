@@ -10,7 +10,7 @@
             var deferred = $q.defer();
 
             function all() {
-                $http.get('/api/all')
+                $http.get('/api/employee/all')
                     .success(function(data) {
                         deferred.resolve(data);
                     });
@@ -24,7 +24,6 @@
                     var results = data.filter(function(user) {
                         return slugify(user.first) === first;
                     });
-                    debugger;
                     if (results.length > 0) {
                         deferred.resolve(results[0]);
                     } else {

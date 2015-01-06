@@ -6,59 +6,51 @@ var swig = require('swig');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var app = module.exports = express();
+var app = express();
 
 app.engine('html', swig.renderFile);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+/* Error handling: 
+    Deveplopment.
+*/
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next){
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+};
+
+/* Error handling: 
+    Production.
+*/
+if (app.get('env') === 'production') {
+    app.use(function(err, req, res, next){
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
+    });
+};
+
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.get('/', function (req, res) {
-    debugger;
-    res.render('index', {message: 'hola mundo'});
+    res.render('index');
 });
 
 mongoose.connect('mongodb://localhost:27017/employees');
-var Employee = require('./models/employees.js');
+var employeeRoutes = require('./routes/employee.js')(app);
 
-app.post('/api/add',function(req, res) {
-        var employee = new Employee({
-        first: req.body.first,
-        last: req.body.last,
-        street: req.body.street,
-        city: req.body.city,
-        state: req.body.state,
-        country: req.body.country,
-        postal_code: req.body.postal_code,
-        abilities: req.body.abilities,
-        data: {
-            worked_hours: req.body.worked_hours,
-            worked_hpd: req.body.worked_hpd,
-            salary: req.body.salary
-        }
-        });
-
-        employee.save(function(err, employee) {
-            if (err)
-                res.send(err);
-            console.log(employee);
-            res.json({employee: employee, message: 'Employee created!' });
-        });
-    });
-
-app.get('/api/all', function(req, res) {
-    Employee.find(function(err, employees) {
-        if (err) {
-            res.send(err);
-        }
-        res.json(employees);
-    });
-});
 
 var port = 3000;
 app.listen(port, function (err) {

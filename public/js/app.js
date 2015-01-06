@@ -11,6 +11,10 @@
                 templateUrl: 'views/user-list.html',
                 controller: 'UserListController'
             })
+            .when('/user/add', {
+                templateUrl: 'views/user-add.html'
+                //controller: 'UserAddController'
+            })
             .when('/user/:first', {
                 templateUrl: 'views/user.html',
                 controller: 'UserController',

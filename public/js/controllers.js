@@ -1,17 +1,17 @@
-(function () {
+(function() {
     /**
-    * user.controllers Module
-    *
-    * Description
-    */
+     * user.controllers Module
+     *
+     * Description
+     */
     angular.module('user.controllers', [])
-        .controller('UserListController', ['$scope', '$routeParams','userService', function($scope, $routeParams, userService){
+        .controller('UserListController', ['$scope', '$routeParams', 'userService', function($scope, $routeParams, userService) {
             var type = $routeParams.type;
 
             if (type) {
                 $scope.type = type;
-                
-                userService.byType(type).then(function(data){
+
+                userService.byType(type).then(function(data) {
                     $scope.users = data;
                 })
             } else {
@@ -20,7 +20,7 @@
                 })
             };
         }])
-        .controller('UserController', ['$scope', '$routeParams', 'userService', function($scope, $routeParams, userService){
+        .controller('UserController', ['$scope', '$routeParams', 'userService', function($scope, $routeParams, userService) {
             var first = $routeParams.first;
             $scope.user = {};
 
@@ -29,11 +29,11 @@
                     $scope.user = data;
                 })
         }])
-        .controller('TabsController', function(){
+        .controller('TabsController', function() {
             this.tab = 3;
 
-            this.selectTab = function (tab) {
+            this.selectTab = function(tab) {
                 this.tab = tab;
-       }; 
-    });
+            };
+        });
 })()

@@ -1,5 +1,5 @@
-# ngUsers: Aplicación AngularJS sobre trabajadores, horas trabajadas y salarios. 
-## Desarrollo con proposito de aprendizaje.
+# Aplicación AngularJS sobre trabajadores, horas trabajadas y salarios. 
+## Desarrollo con proposito de aprendizaje y práctica.
 
 ### Como configurar el entorno.
 
@@ -7,14 +7,12 @@
 
 2. Requerido tener instalado MongoDB para el almacenamiento de los empleados.
 
+3. Introducir empleados mediante post del REST a la siguiente ruta http://localhost:3000/api/employees
+
 ### Issues a revisar.
 
 * Resolver un error en el filtro del array .some (Archivo services.js).
 
-### Próximas feautures a desarrollar.
-
-* Metodos PUT y DELETE del controlador de employees.
-
 ### Licencia
 
-MIT License (MIT) Copyright (c) 2014 @jesusmurf
+MIT License (MIT) Copyright (c) 2015 @jesusmurf

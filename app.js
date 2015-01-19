@@ -1,4 +1,3 @@
-//Este es un comentario
 var express = require('express'),
     path = require('path'),
     morgan = require('morgan'),
@@ -15,6 +14,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
+// Connect to the database
+mongoose.connect('mongodb://localhost:27017/employees');
 
 /* Error handling: 
     Deveplopment.
@@ -42,20 +44,34 @@ if (app.get('env') === 'production') {
     });
 };
 
+
+// Templating and static files
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
+// Routes
+var employeesController = require('./controllers/employees');
+var router = express.Router();
+
 app.get('/', function(req, res) {
     res.render('index');
 });
 
-mongoose.connect('mongodb://localhost:27017/employees');
+var router = express.Router();
 
-require('./routes/employee.js')(app,router);
+router.route('/employees')
+    .get(employeesController.getEmployees)
+    .post(employeesController.postEmployee);
 
+router.route('/employees/:employee_id')
+    .put(employeesController.updateEmployee)
+    .delete(employeesController.deleteEmployee);
 
+app.use('/api', router);
+
+// Server connection
 var port = 3000;
 app.listen(port, function(err) {
     if (err) {
